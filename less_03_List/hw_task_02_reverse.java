@@ -23,7 +23,7 @@ class Answer {
         }
     }
 
-    public void reverse(Node current, Node prev){
+    private void reverse(Node current, Node prev){
         if (current.next == null){
             head = current;
         } else {

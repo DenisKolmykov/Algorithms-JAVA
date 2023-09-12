@@ -18,19 +18,36 @@ class Answer {
         // Введите свое решение ниже
         if (head != null && head.next != null){
             Node temp = head;
-            reverse (head.next, head);
+            //reverse (head.next, head);
+            reverse_iter ();
             temp.next = null;
         }
     }
 
-    private void reverse(Node current, Node prev){
-        if (current.next == null){
-            head = current;
-        } else {
-            reverse (current.next, current);
-        }
-        current.next = prev;
-        //prev.next = null;
+    // private void reverse(Node current, Node prev){
+    //     if (current.next == null){
+    //         head = current;
+    //     } else {
+    //         reverse (current.next, current); 
+    //     }
+    //     current.next = prev;
+    //     //prev.next = null;
+    // }
+
+    // разворот лучше делать итеративным (без рекурсии), 
+    // т.к. на больших списках может быть переполенени стека
+    private void reverse_iter(){
+        Node current = head.next;
+        Node prev = head;
+
+        while (current != null){
+            Node temp2 = current.next;
+            current.next = prev;
+            prev = current;
+            current = temp2;
+        };
+        
+        head = prev;
     }
 }
 
@@ -44,6 +61,7 @@ public class hw_task_02_reverse {
             head.next = new Node(2);
             head.next.next = new Node(3);
             head.next.next.next = new Node(4);
+
         } else {
             head = new Node(Integer.parseInt(args[0]));
             head.next = new Node(Integer.parseInt(args[1]));

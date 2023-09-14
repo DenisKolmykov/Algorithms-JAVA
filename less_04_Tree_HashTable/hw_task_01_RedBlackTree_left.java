@@ -55,13 +55,17 @@ class BinaryTree{
     }
 
     public boolean insert(int value){
-        if(root == null){
+        if(root != null){
+            boolean result = insert (root, value);
+            root = rebalance(root); // добавлена балансировка для/при изменении корня
+            root.color = Color.BLACK;
+            return result;
+        } else {
             root = new Node();
             root.value = value;
             root.color = Color.BLACK;
             return true;
         }
-        return insert(root, value);
     }
 
     // public boolean insert(Node node, int value) {
@@ -74,7 +78,7 @@ class BinaryTree{
     //             node.right = new Node();
     //             node.right.value = value;
     //             node.right.color = Color.RED;
-    //             rebalance(node);
+    //             rebalance(node.right);
     //             return true;
     //         }
     //         return insert(node.right, value);
@@ -84,7 +88,7 @@ class BinaryTree{
     //             node.left = new Node();
     //             node.left.value = value;
     //             node.left.color = Color.RED;
-    //             rebalance(node);
+    //             rebalance(node.left);
     //             return true;
     //         }
     //         return insert(node.left, value);
@@ -214,21 +218,26 @@ public class hw_task_01_RedBlackTree_left {
 
         BinaryTree tree = new BinaryTree();
 
-        tree.insert(5);
-        tree.insert(3);
         tree.insert(1);
         tree.insert(2);
+        tree.insert(3);
         tree.insert(4);
-        tree.insert(7);
+        tree.insert(5);
         tree.insert(6);
+        tree.insert(7);
         tree.insert(8);
-        tree.insert(30);
-        tree.insert(31);
-        tree.insert(32);
-        tree.insert(33);
-        tree.insert(34);
-        tree.insert(29);
-        
+        tree.insert(9);
+        tree.insert(10);
+        tree.insert(11);
+        tree.insert(12);
+        tree.insert(13);
+        tree.insert(14);
+        tree.insert(15);
+        tree.insert(16);
+        tree.insert(17);
+        tree.insert(18);
+        tree.insert(19);
+        tree.insert(20);
 
         tree.printTree();
 
